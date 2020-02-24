@@ -1,0 +1,6 @@
+{% extends 'index.html' %}
+
+{% block pagecontent %}
+{% csrf_token %}
+{{ form.as_p }}
+{% endblock pagecontent %}
