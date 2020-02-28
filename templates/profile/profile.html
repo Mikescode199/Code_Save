@@ -9,8 +9,12 @@
     </head>
 
 {% block link1 %}
-<a class="nav-link" href="{% url 'codigo:savecode' %}"></a>
-<span>Save code</span></a>
+  <li class="nav-item active">
+    <a class="nav-link" href="{% url 'codigo:savecode' %}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Save code</span>
+    </a>
+  </li>
 {% endblock link1 %}
 
 {% block pagecontent %}
@@ -51,20 +55,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-work">
-                            <p>WORK LINK</p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
-                            <p>SKILLS</p>
-                            <a href="">Web Designer</a><br/>
-                            <a href="">Web Developer</a><br/>
-                            <a href="">WordPress</a><br/>
-                            <a href="">WooCommerce</a><br/>
-                            <a href="">PHP, .Net</a><br/>
-                        </div>
-                    </div>
+                   
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -81,7 +72,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ request.user }} </p>
+                                                <p> {{ request.user.name }} </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -90,25 +81,24 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <p>
-                                                    {{ request_user.nickname }}
-                                                   
+                                                    {{ request.user }}  
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Phone</label>
+                                                <label>Nickname</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ request.birth }}</p>
+                                                <p>{{ request.user.nickname }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Profession</label>
+                                                <label>Birth</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ object.name }}</p>
+                                                <p>{{ request.user.birth }}</p>
                                             </div>
                                         </div>
                             </div>
@@ -118,23 +108,23 @@
                                                 <label>Experience</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ object.name }}</p>
+                                                <p>{{ request.user.aboutme }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Hourly Rate</label>
+                                                <label>Profession</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ object.name }}</p>
+                                                <p>{{ request.user.profetion }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Total Projects</label>
+                                                <label>Photo</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ object.name }}</p>
+                                                <p>{{ request.user.image_user }}</p>
                                             </div>
                                         </div>
                                         <div class="row">

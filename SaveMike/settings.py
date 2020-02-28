@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'codigo',
-    'usuario',
+    'codeuser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +72,10 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'codeuser.UserCode'
+
 WSGI_APPLICATION = 'SaveMike.wsgi.application'
+
 
 
 # Database
@@ -81,7 +84,7 @@ WSGI_APPLICATION = 'SaveMike.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mikecode',
+        'NAME': 'savemike1', #Base de datos nombre
         'USER': 'mikescode',
         'PASSWORD': '12345',
         'HOST': '127.0.0.1',

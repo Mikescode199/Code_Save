@@ -21,7 +21,7 @@ def savecode(request):
         form = SavecodeForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('usuario:profile')
+            return redirect('codeuser:profile')
 
     else:
         form = SavecodeForm()
