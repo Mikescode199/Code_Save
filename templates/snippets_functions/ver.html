@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block pagecontent %}
+
+
+
+
+<div class="card text-center">
+    <div class="card-header">
+        {{ object.lenguajeProgramacion }}
+    </div>
+    <div class="card-body">
+      <img class="card-img-top" src="{{ object.codigo_foto.url }}" >
+      <p class="card-text">{{ object.informacion_codigo }} </p>
+      
+    </div>
+    <div class="card-footer text-muted">
+      Fecha de publicacion {{ object.fecha_creacion  }}
+    </div>
+</div>
+
+
+
+
+{% endblock pagecontent %}

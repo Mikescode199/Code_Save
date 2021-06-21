@@ -1,12 +1,27 @@
 from django.urls import path
 from . import views
-from django.conf.urls import include
-from django.contrib import admin
+from django.contrib.auth import views as auth_view
 
 
 app_name = 'codeuser'
 urlpatterns = [
+
+    path('',
+        auth_view.LoginView.as_view(template_name='login/login.html'),
+        name='logout_cda'),
+
+    path("menu/", views.menu, name='menu'),
+    
     path('profile/', views.profile, name='profile'),
-    path('', views.registro_user, name='registro_user'), #LogIN user
-    path('register/', views.Register.as_view(), name='register'),
+
+    path('missnippets/', views.missnippets, name='missnippets'),
+    
+    path("CrearSnippet/", views.CrearSnippet.as_view(), name="CrearSnippet"),
+    path("VerSnippet/<int:pk>", views.VerSnippet.as_view(), name="VerSnippet"),
+    path("EditarSnippet/<int:pk>", views.EditarSnippet.as_view(), name="EditarSnippet"),
+    path("EliminarSnippet/<int:pk>", views.EliminarSnippet.as_view(), name="EliminarSnippet"),
+    
+
+    
+    
 ]

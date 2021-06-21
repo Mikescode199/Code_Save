@@ -10,7 +10,7 @@
 
 {% block link1 %}
   <li class="nav-item active">
-    <a class="nav-link" href="{% url 'codigo:savecode' %}">
+    <a class="nav-link" href="#">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Save code</span>
     </a>
@@ -58,13 +58,15 @@
                    
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
+                            {% for perfil in perfiluser %}
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti123</p>
+                                                <p>{{ perfil.id }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -72,7 +74,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p> {{ request.user.name }} </p>
+                                                <p> {{ perfil.nombre }} </p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -81,72 +83,54 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <p>
-                                                    {{ request.user }}  
+                                                    {{ perfil.correo }}  
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Nickname</label>
+                                                <label>Telefono</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ request.user.nickname }}</p>
+                                                <p>{{ perfil.telefono }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Birth</label>
+                                                <label>Direccion</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ request.user.birth }}</p>
+                                                <p>{{ perfil.direccion }}</p>
                                             </div>
                                         </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Experience</label>
+                                                <label>GitLab</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ request.user.aboutme }}</p>
+                                                <p>{{ perfil.repositorio_gitlab }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Profession</label>
+                                                <label>GitHub</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ request.user.profetion }}</p>
+                                                <p>{{ perfil.repositorio_github }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Photo</label>
+                                                <label>Lenguajes usados</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ request.user.image_user }}</p>
+        
+                                                {% for usuario in perfil.lenguajes_programacion.all %}
+                                                    <p> {{ usuario.nombre }} </p>
+                                                {% endfor %}
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                    
-                
-                                                <p> {% for usuario in object_list %}
-                                                      {{ usuario.name }}
-                                                    {% endfor %}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{ object.name }}</p>
-                                            </div>
-                                        </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Your Bio</label><br/>
@@ -154,6 +138,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
