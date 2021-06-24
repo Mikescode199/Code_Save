@@ -43,9 +43,21 @@ class CreateProfile(generic.CreateView):
 
 
 
-############################### CRUD  ###############################
+############################### CRUD PROFILE  ###############################
+class Crearprofile(generic.CreateView):
+    template_name = 'profile/crear_profile.html'
+    form_class = FormProgramador
+    success_url = reverse_lazy('codeuser:profile')
 
 
+class Editarprofile(LoginRequiredMixin, generic.UpdateView):
+    template_name = 'profile/editar_profile.html'
+    model = Programador
+    form_class = FormProgramador
+    success_url = reverse_lazy('codeuser:profile')
+
+
+############################### CRUD SNIPPET  ###############################
 class CrearSnippet(generic.CreateView):
     template_name = 'snippets_functions/editar.html'
     form_class = FormSnippet

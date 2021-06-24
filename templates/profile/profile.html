@@ -51,7 +51,28 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+
+
+
+                
+    
+                            {% if not perfiluser %}
+
+                              <a href="{% url 'codeuser:Crearprofile' %}">Crear profile</a>
+
+                            {% else %}
+
+                                {% for i in perfiluser %}
+
+                                <a href="{% url 'codeuser:Editarprofile' i.pk %}">Editar profile</a>
+                                
+                                {% endfor %}
+
+
+                            {% endif %}
+
+                        
+
                     </div>
                 </div>
                 <div class="row">

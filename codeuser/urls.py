@@ -17,6 +17,8 @@ urlpatterns = [
     path('missnippets/', views.missnippets, name='missnippets'),
     
     path("CrearSnippet/", views.CrearSnippet.as_view(), name="CrearSnippet"),
+    path("Crearprofile/", views.Crearprofile.as_view(), name="Crearprofile"),
+    path("Editarprofile/<int:pk>", views.Editarprofile.as_view(), name="Editarprofile"),
     path("VerSnippet/<int:pk>", views.VerSnippet.as_view(), name="VerSnippet"),
     path("EditarSnippet/<int:pk>", views.EditarSnippet.as_view(), name="EditarSnippet"),
     path("EliminarSnippet/<int:pk>", views.EliminarSnippet.as_view(), name="EliminarSnippet"),
