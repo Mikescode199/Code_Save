@@ -19,6 +19,7 @@ class Programador(models.Model):
     repositorio_gitlab = models.URLField(blank = True)
     repositorio_github = models.URLField(models.URLField(blank = True))
     lenguajes_programacion = models.ManyToManyField(Lenguaje_programacion)
+    imagen_perfil  = models.ImageField(upload_to='Imagenes', default = "anonimo.png")
 
     def __str__(self):
         return '{}'.format(self.nombre)

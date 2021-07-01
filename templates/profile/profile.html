@@ -24,11 +24,9 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
+                            {% for i in perfiluser %}
+                            <img class="card-img-top" src="{{ i.imagen_perfil.url }}" alt=""/>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -82,14 +80,6 @@
                             {% for perfil in perfiluser %}
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{ perfil.id }}</p>
-                                            </div>
-                                        </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Name</label>
