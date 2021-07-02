@@ -36,10 +36,6 @@ def missnippets(request):
 
 
 
-class CreateProfile(generic.CreateView):
-    template_name = 'register/ver.html'
-    form_class = FormProgramador
-    success_url = reverse_lazy('codeuser:profile')
 
 
 
@@ -48,6 +44,14 @@ class Crearprofile(generic.CreateView):
     template_name = 'profile/crear_profile.html'
     form_class = FormProgramador
     success_url = reverse_lazy('codeuser:profile')
+
+    def get(self, request, *args, **kwargs):
+
+        form = self.form_class(initial={'usuario': request.user })
+
+        return render(request, self.template_name, {'form': form
+        })
+
 
 
 class Editarprofile(LoginRequiredMixin, generic.UpdateView):
@@ -62,6 +66,14 @@ class CrearSnippet(generic.CreateView):
     template_name = 'snippets_functions/editar.html'
     form_class = FormSnippet
     success_url = reverse_lazy('codeuser:missnippets')
+
+    def get(self, request, *args, **kwargs):
+
+        form = self.form_class(initial={'usuario': request.user })
+
+        return render(request, self.template_name, {'form': form
+        })
+
     
 
 class EditarSnippet(LoginRequiredMixin, generic.UpdateView):

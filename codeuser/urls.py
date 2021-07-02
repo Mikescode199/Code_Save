@@ -7,7 +7,7 @@ app_name = 'codeuser'
 urlpatterns = [
 
     path('',
-        auth_view.LoginView.as_view(template_name='login/login.html'),
+        auth_view.LoginView.as_view(template_name='account/login.html'),
         name='logout_cda'),
 
     path("menu/", views.menu, name='menu'),
