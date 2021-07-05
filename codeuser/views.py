@@ -20,7 +20,8 @@ def profile(request):
 
 def menu(request):
     context = {
-        'snippet' : SnippeFilter(request.GET, queryset=Snippet.objects.filter(privacidad = False))
+        'snippet' : SnippeFilter(request.GET, queryset=Snippet.objects.filter(privacidad = False)),
+        "perfiluser" : Programador.objects.filter(usuario = request.user)
 
     }
     return render(request, "componentes/menu.html", context)

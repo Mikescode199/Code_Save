@@ -1,15 +1,19 @@
 {% extends 'index.html' %}
 {% block pagecontent %}
 
-
 <div class="alert alert-primary" role="alert">
 
+  <div class="card text-center">
+
     <form method="get">
-        {{ snippet.form.as_p }}
+        {{ snippet.form }}
         <button type="submit" class="btn btn-primary">Buscar</button>
     </form
 
+  </div>
+
 </div>
+
 
 {% for i in snippet.qs %}
 
@@ -20,7 +24,8 @@
     <div class="card-body">
       <img class="card-img-top" src="{{ i.codigo_foto.url }}" >
       <p class="card-text">{{ i.informacion_codigo }} </p>
-      <a href="#" class="btn btn-primary">Ver Snippet completo</a>
+      
+      <a href="{% url 'codeuser:VerSnippet' i.pk %} " class="btn btn-primary">Ver Snippet completo</a>
     </div>
     <div class="card-footer text-muted">
       Fecha de publicacion {{ i.fecha_creacion  }}

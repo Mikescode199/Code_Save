@@ -20,6 +20,7 @@ class Programador(models.Model):
     repositorio_github = models.URLField(models.URLField(blank = True))
     lenguajes_programacion = models.ManyToManyField(Lenguaje_programacion)
     imagen_perfil  = models.ImageField(upload_to='Imagenes', default = "anonimo.png")
+    aboutme = models.TextField(default="I'm so dope")
 
     def __str__(self):
         return '{}'.format(self.nombre)
@@ -41,6 +42,7 @@ class Snippet(models.Model):
     informacion_codigo  = models.TextField(blank = True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     privacidad = models.BooleanField(default = False)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return '{}'.format(self.informacion_codigo)
