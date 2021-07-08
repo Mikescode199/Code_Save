@@ -1,0 +1,22 @@
+{% extends 'nuevo_template/dashboard.html' %}
+
+{% block pagecontent %}
+      <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Crear snippet</h4>
+              <p class="card-category">Created using Roboto Font Family</p>
+            </div>
+            <div class="card-body">
+              
+              <form class="user" method="POST" enctype=multipart/form-data>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Listo</button>
+              </form
+            </div>
+          </div>
+        </div>
+      </div>
+ {% endblock pagecontent %}

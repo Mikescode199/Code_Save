@@ -1,0 +1,142 @@
+
+{% extends 'nuevo_template/dashboard.html' %}
+
+{% block pagecontent %}
+        {% for perfil in perfiluser %}
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Edit Profile</h4>
+                  <p class="card-category">Complete your profile</p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <!-- <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Company (disabled)</label>
+                          <input type="text" class="form-control" disabled>
+                        </div>
+                      </div> -->
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Username</label>
+                          <br/>
+                          {{ request.user.username }}
+                         
+                          
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Email address</label>
+                          {{ perfil.correo }} 
+                          <!-- <input type="email" class="form-control"> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Fist Name</label>
+                          <br/>
+                          {{ perfil.nombre }}
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Last Name</label>
+                          <br/>
+                          {{ perfil.apellidos }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Telefono</label>
+                          <br/>
+                          {{ perfil.telefono }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Direccion</label>
+                          <br/>
+                          {{ perfil.direccion }}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">GitLab</label>
+                          <br/>
+                          {{ perfil.repositorio_gitlab }}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">GitHub</label>
+                          <br/>
+                          {{ perfil.repositorio_github }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Lenguajes usados</label>
+                          <div class="form-group">
+                            {% for usuario in perfil.lenguajes_programacion.all %}
+                            <p> {{ usuario.nombre }} </p>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% if not perfiluser %}
+
+                    <a  class="btn btn-primary pull-right" href="{% url 'codeuser:Crearprofile' %}">Crear profile</a>
+
+                    {% else %}
+
+                      {% for i in perfiluser %}
+
+                      <a  class="btn btn-primary pull-right"  href="{% url 'codeuser:Editarprofile' i.pk %}">Editar profile</a>
+                      
+                      {% endfor %}
+
+
+                    {% endif %}
+                    <!-- <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <div class="clearfix"></div> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+                <div class="card-avatar">
+                  {% for i in perfiluser %}
+                  <img class="img" src="{{ i.imagen_perfil.url }}" alt=""/>
+                  {% endfor %}
+                </div>
+                <div class="card-body">
+                  <h6 class="card-category">CEO / Co-Founder</h6>
+                  <h4 class="card-title">{{ perfil.nombre }}</h4>
+                  <p class="card-description">
+                    <br/>
+                    {{ perfil.aboutme }}
+                  </p>
+                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+{% endblock pagecontent %}

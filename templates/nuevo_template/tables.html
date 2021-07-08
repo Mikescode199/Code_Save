@@ -1,0 +1,48 @@
+{% extends 'nuevo_template/dashboard.html' %}
+
+{% block pagecontent %}
+
+
+
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Mis Snippets</h4>
+                  <p class="card-category"> Bienvenido {{ request.user }}</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <tr>
+                          <th scope="col">id</th>
+                          <th scope="col">Snippet</th>
+                          <th scope="col">....</th>
+                          <th scope="col">Actions</th>
+                          <th scope="col">....</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+    
+                        {% for i in snippet %}
+
+                        <tr>
+                          <th scope="row"> {{ i.id }} </th>
+                          <th scope="row"> {{ i.informacion_codigo }} </th>
+                          <td><a class="btn btn-success"  href="{% url 'codeuser:VerSnippet' i.pk %} ">Ver </a></td>
+                          <td><a class="btn btn-warning" href="{% url 'codeuser:EditarSnippet' i.pk %}">Editar </a></td>
+                          <td><a  class="btn btn-danger" href="{% url 'codeuser:EliminarSnippet' i.pk %}">Eliminar </a></td>
+                        </tr>
+                  
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+  {% endblock pagecontent %}

@@ -15,7 +15,7 @@ def profile(request):
         'perfiluser' : Programador.objects.filter(usuario = request.user)
 
     }
-    return render(request, 'profile/profile.html', context)
+    return render(request, "nuevo_template/user.html", context)
    
 
 def menu(request):
@@ -24,7 +24,7 @@ def menu(request):
         "perfiluser" : Programador.objects.filter(usuario = request.user)
 
     }
-    return render(request, "componentes/menu.html", context)
+    return render(request, "nuevo_template/dashboard.html", context)
 
 
 
@@ -33,7 +33,7 @@ def missnippets(request):
         'snippet' : Snippet.objects.filter(usuario = request.user)
 
     }
-    return render(request, "snippets_functions/tabla_snippet.html", context)
+    return render(request, "nuevo_template/tables.html", context)
 
 
 
@@ -64,7 +64,7 @@ class Editarprofile(LoginRequiredMixin, generic.UpdateView):
 
 ############################### CRUD SNIPPET  ###############################
 class CrearSnippet(generic.CreateView):
-    template_name = 'snippets_functions/editar.html'
+    template_name = 'nuevo_template/typography.html'
     form_class = FormSnippet
     success_url = reverse_lazy('codeuser:missnippets')
 
