@@ -1,6 +1,32 @@
 {% extends 'nuevo_template/dashboard.html' %}
+{% load static %}
+
+<!-- Head html  -->
+{% block head_tags %}
+<meta charset="utf-8" />
+<link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}">
+<link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>
+  Material Dashboard Dark Edition by Creative Tim
+</title>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+<!--     Fonts and icons     -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<!-- CSS Files -->
+<link href="{% static 'assets/css/material-dashboard.css' %}" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="{% static 'assets/demo/demo.css' %}" rel="stylesheet" />
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+{% endblock %}
 
 {% block pagecontent %}
+
       <div class="content">
         <div class="container-fluid">
           <div class="card">
@@ -10,13 +36,74 @@
             </div>
             <div class="card-body">
               
-              <form class="user" method="POST" enctype=multipart/form-data>
+              <form method="POST" enctype=multipart/form-data>
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Listo</button>
-              </form
+            
+            
+                <div class="form-group" id="app">
+                  <label for="exampleFormControlTextarea1">usuario</label>
+                  {{ form.usuario }}
+                </div>
+            
+            
+                <div class="form-group" id="app">
+                  <!-- Create select class -->
+                  <label for="exampleFormControlSelect1">lenguaje Programacion</label>
+                  {{ form.lenguajeProgramacion }}
+            
+                  </select>
+                </div>
+               
+            
+                <div class="form-group" id="app">
+                  <label for="exampleFormControlFile1">codigo foto click here </label>
+                    {{ form.codigo_foto }}
+                </div>
+            
+                
+            
+                <div class="form-group" id="app">
+            
+                  <label for="exampleFormControlTextarea1">codigo_texto</label>
+                  {{ form.codigo_texto }}
+                </div>
+            
+                <div class="form-group" id="app">
+                  <label for="exampleFormControlTextarea1">informacion_codigo</label>
+                  {{ form.informacion_codigo }}
+                </div>
+            
+            
+            
+                <div class="form-group" id="app">
+                  <!-- Create select class -->
+                  <label for="exampleFormControlSelect1">categoria</label>
+                  {{ form.categoria }}
+            
+                  </select>
+                </div>
+            
+            
+                <div class="form-group" id="app">
+                  <label for="exampleFormControlTextarea1">privacidad</label>
+                  {{ form.privacidad }}
+                </div>
+            
+                <!-- Summit button -->
+                <button type="submit" class="btn btn-primary" >Guardar</button>
+              </form>
+            
+            
             </div>
           </div>
         </div>
       </div>
+      <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      </script>
+
+      <script src="{% static 'Vue/snippet.js' %}"></script>
+
+
  {% endblock pagecontent %}
+ 

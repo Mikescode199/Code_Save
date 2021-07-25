@@ -9,10 +9,13 @@
     <div class="card-body">
       <img class="card-img-top" src="{{ object.codigo_foto.url }}" >
       <p class="card-text">{{ object.informacion_codigo }} </p>
+      <p class="card-text">{{ object.codigo_texto }} </p>
+      <p class="card-text">{{ object.categoria }} </p>
+      <p class="card-text">{{ object.informacion_codigo }} </p>
       
     </div>
     <div class="card-footer text-muted">
-      Fecha de publicacion {{ object.fecha_creacion  }}
+      Fecha de publicacion {{ object.fecha_creacion  }}, Created by {{ object.usuario.username }}
     </div>
 </div>
 

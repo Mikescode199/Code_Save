@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+{% block head_tags %}
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}">
@@ -18,7 +20,17 @@
   <link href="{% static 'assets/css/material-dashboard.css' %}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{% static 'assets/demo/demo.css' %}" rel="stylesheet" />
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+
 </head>
+{% endblock %}
 
 <body class="dark-edition">
   <div class="wrapper ">
@@ -57,7 +69,7 @@
               <i class="material-icons">library_books</i>
               <p>Crear Snippet</p>
             </a>
-          </li>
+          <!-- </li>
           <li class="nav-item ">
             <a class="nav-link" href="./icons.html">
               <i class="material-icons">bubble_chart</i>
@@ -75,7 +87,7 @@
               <i class="material-icons">notifications</i>
               <p>Notifications</p>
             </a>
-          </li>
+          </li> -->
           <!-- <li class="nav-item active-pro ">
                 <a class="nav-link" href="./upgrade.html">
                     <i class="material-icons">unarchive</i>
@@ -151,45 +163,54 @@
 
         <div  role="alert">
 
-          <div class="card text-center">
+          <input type="text" class="form-control" id ="exampleFormControlInput1" onkeyup="MyFilterfunctionbyname()" placeholder="Buscar Snippet">
 
-            <form method="get">
-                {{ snippet.form }}
-                <button type="submit" class="btn btn-primary">Buscar</button>
-            </form
 
-          
+            {% for i in snippet %}
 
-     
-
-            {% for i in snippet.qs %}
-
-            <div class="card text-center">
-              <div class="card-header">
-                  {{ i.lenguajeProgramacion }}
+              <div class="card text-center" id="card">
+                <div class="card-header" id="myList">
+                    {{ i.lenguajeProgramacion }}
+                </div>
+                <div class="card-body">
+                  <img class="card-img-top" src="{{ i.codigo_foto.url }}" >
+                  <p class="card-text">{{ i.informacion_codigo }} </p>
+                  
+                  <a href="{% url 'codeuser:VerSnippet' i.pk %} " class="btn btn-primary">Ver Snippet completo</a>
+                </div>
+                <div class="card-footer text-muted">
+                  Fecha de publicacion {{ i.fecha_creacion  }}
+                </div>
               </div>
-              <div class="card-body">
-                <img class="card-img-top" src="{{ i.codigo_foto.url }}" >
-                <p class="card-text">{{ i.informacion_codigo }} </p>
-                
-                <a href="{% url 'codeuser:VerSnippet' i.pk %} " class="btn btn-primary">Ver Snippet completo</a>
-              </div>
-              <div class="card-footer text-muted">
-                Fecha de publicacion {{ i.fecha_creacion  }}
-              </div>
-            </div>
-          
-          
-            {% endfor %}
-
-          
-          
-
-          </div>
             
+            
+            {% endfor %}
+            <script>
+              //I am using a function to filter the list of snippets to show only the snippets that match the search
+              function MyFilterfunctionbyname() {
+                var filter = document.getElementById("exampleFormControlInput1").value;
+                var snippets = document.getElementsByClassName("card");
+                for (var i = 0; i < snippets.length; i++) {
+                  snippets[i].style.display = "none";
+                }
+                var myArray = document.getElementsByClassName("card");
+                for (var i = 0; i < myArray.length; i++) {
+                  var myArrayText = myArray[i].getElementsByClassName("card-header")[0].innerHTML;
+                  if (myArrayText.toLowerCase().indexOf(filter.toLowerCase()) > -1) {
+                    myArray[i].style.display = "block";
+                  }
+                }
+              }
+            </script>
+
+            
+
           
-        </div>
+        </div> 
+
       {% endblock pagecontent %}
+
+
       </div>
       <footer class="footer">
         <div class="container-fluid">
@@ -484,6 +505,9 @@
 
     });
   </script>
+
+
+
 </body>
 
 </html>

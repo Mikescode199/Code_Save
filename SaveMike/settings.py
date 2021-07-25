@@ -32,9 +32,11 @@ ALLOWED_HOSTS = ["*"]
 
 OWN_APPS = [
     'codeuser',
+    'api_code'
 ]
 
 APPS_TERCEROS  = [
+    'rest_framework',
     'django_filters',
     'allauth.socialaccount.providers.google',
     'allauth',
@@ -65,6 +67,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
 
 ]
 
@@ -182,4 +185,11 @@ SOCIALACCOUNT_PROVIDERS = {
             'key': ''
         }
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
