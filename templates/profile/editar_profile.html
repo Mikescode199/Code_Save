@@ -11,69 +11,8 @@
       <form method="POST" enctype=multipart/form-data>
         {% csrf_token %}
 
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">User</label>
-          {{ form.usuario }}
-        </div>
-    
-    
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Nombre</label>
-          {{ form.nombre }}
-        </div>
-    
-    
-        <div class="form-group" >
-          <label for="exampleFormControlTextarea1">apellidos</label>
-          {{ form.apellidos }}
-        </div>
-
-        <div class="form-group" >
-          <label for="exampleFormControlTextarea1">telefono</label>
-          {{ form.telefono }}
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">correo</label>
-          {{ form.correo }}
-        </div>
-        <div class="form-group" >
-          <label for="exampleFormControlTextarea1">direccion</label>
-          {{ form.direccion }}
-        </div>
-
-        <div class="form-group" >
-          <label for="exampleFormControlTextarea1">repositorio_gitlab</label>
-          {{ form.repositorio_gitlab }}
-        </div>
-
-        <div class="form-group" >
-          <label for="exampleFormControlTextarea1">repositorio_github</label>
-          {{ form.repositorio_github }}
-        </div>
-
-        <div class="form-group" >
-          <!-- Create select class -->
-          <label for="exampleFormControlSelect1">lenguaje Programacion</label>
-          {{ form.lenguajes_programacion }}
-    
-          </select>
-        </div>
-
-       
-    
-        <div class="form-group" >
-          <label for="exampleFormControlFile1">codigo foto click here </label>
-            {{ form.imagen_perfil }}
-        </div>
-    
+        {{ form.as_p }}
         
-    
-        <div class="form-group" >
-          <label for="exampleFormControlTextarea1">aboutme</label>
-          {{ form.aboutme }}
-        </div>
-    
-        <!-- Summit button -->
         <button type="submit" class="btn btn-primary" >Guardar</button>
       </form>
     

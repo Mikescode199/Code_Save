@@ -43,6 +43,7 @@ APPS_TERCEROS  = [
     'allauth.account',
     'allauth.socialaccount',
     'django.contrib.sites',
+
     ]
 
 
@@ -130,10 +131,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
+#Hora de Tijuana 
+TIME_ZONE = 'America/Tijuana'
+
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

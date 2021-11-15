@@ -2,7 +2,9 @@
 {% extends 'nuevo_template/dashboard.html' %}
 
 {% block pagecontent %}
-        {% for perfil in perfiluser %}
+
+
+        
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-8">
@@ -11,6 +13,7 @@
                   <h4 class="card-title">Edit Profile</h4>
                   <p class="card-category">Complete your profile</p>
                 </div>
+                {% for perfil in perfiluser %}
                 <div class="card-body">
                   <form>
                     <div class="row">
@@ -97,6 +100,8 @@
                         </div>
                       </div>
                     </div>
+                  {% endfor %}
+
                     {% if not perfiluser %}
 
                     <a  class="btn btn-primary pull-right" href="{% url 'codeuser:Crearprofile' %}">Crear profile</a>
@@ -118,25 +123,42 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  {% for i in perfiluser %}
-                  <img class="img" src="{{ i.imagen_perfil.url }}" alt=""/>
-                  {% endfor %}
+              {% for i in perfiluser %}
+                <div class="card card-profile">
+                  <div class="card-avatar">
+                
+                    <img class="img" src="{{ i.imagen_perfil.url }}" alt=""/>
+                    
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-category"></h6>
+                    <h4 class="card-title">{{ i.nombre }} {{ i.apellidos }}</h4>
+                    <p class="card-description">
+                      <br/>
+                      {{ i.aboutme }}
+                    </p>
+                    <div id="donate-button-container">
+                      <div id="donate-button"></div>
+                      <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+                      <script>
+                      PayPal.Donation.Button({
+                      env:'production',
+                      hosted_button_id:'S2T52YGAWYEPW',
+                      image: {
+                      src:'https://www.paypalobjects.com/en_US/MX/i/btn/btn_donateCC_LG.gif',
+                      alt:'Donate with PayPal button',
+                      title:'PayPal - The safer, easier way to pay online!',
+                      }
+                      }).render('#donate-button');
+                      </script>
+                    </div>
+                      
+                  </div>
                 </div>
-                <div class="card-body">
-                  <h6 class="card-category">CEO / Co-Founder</h6>
-                  <h4 class="card-title">{{ perfil.nombre }}</h4>
-                  <p class="card-description">
-                    <br/>
-                    {{ perfil.aboutme }}
-                  </p>
-                  <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
       </div>
-      {% endfor %}
+      
 {% endblock pagecontent %}

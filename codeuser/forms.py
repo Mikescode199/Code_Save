@@ -2,6 +2,7 @@ from django import forms
 from django.forms import widgets 
 from .models import *
 
+
 class FormLenguaje_programacion(forms.ModelForm):
     class Meta:
         model = Lenguaje_programacion
@@ -29,8 +30,21 @@ class FormProgramador(forms.ModelForm):
             'aboutme',
         ]
 
+        labels = {
+            'nombre': 'Nombre',
+            'apellidos': 'Apellidos',
+            'telefono': 'Telefono',
+            'correo': 'Correo',
+            'direccion': 'Direccion',
+            'repositorio_gitlab': 'Repositorio Gitlab',
+            'repositorio_github': 'Repositorio Github',
+            'lenguajes_programacion': 'Lenguajes de programacion',
+            'imagen_perfil': 'Imagen de perfil',
+            'aboutme': 'Acerca de mi',
+        }
+
         widgets = {
-            'usuario' : forms.Select(attrs={'class':"form-control", 'id':"exampleFormControlInput1", 'placeholder':"codigo_texto"}),
+            'usuario' : forms.HiddenInput(),
             'nombre': widgets.TextInput(attrs={'class':"form-control", 'id':"exampleFormControlInput1"}),      
             'apellidos': widgets.TextInput(attrs={'class':"form-control", 'id':"exampleFormControlInput1"}),
             'telefono': widgets.TextInput(attrs={'class':"form-control", 'id':"exampleFormControlInput1"}),
@@ -63,8 +77,17 @@ class FormSnippetEdit(forms.ModelForm):
         'categoria',
         'privacidad']
 
+        label = {
+            'lenguajeProgramacion': 'Lenguaje de programacion',
+            'codigo_foto': 'Codigo de foto',
+            'codigo_texto': 'Codigo de texto',
+            'informacion_codigo': 'Informacion del codigo',
+            'categoria': 'Categoria',
+            'privacidad': 'Privacidad',
+        }
+
         widgets = {
-            'usuario': forms.Select(attrs={'class':"form-control", 'id':"exampleFormControlInput1", 'placeholder':"codigo_texto"}),
+            'usuario': forms.HiddenInput(),
             'lenguajeProgramacion': forms.Select(attrs={'class':"form-control", 'id':"exampleFormControlSelect1"}),
             'codigo_foto': forms.FileInput(attrs={'class':"form-control-file", 'id':"exampleFormControlFile1", 'placeholder':"Seleccionar archivo"}),
             'codigo_texto': forms.Textarea(attrs={'class':"form-control", 'id':"exampleFormControlTextarea1", 'placeholder':"codigo_texto"}),
