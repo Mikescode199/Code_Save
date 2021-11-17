@@ -1,25 +1,47 @@
 {% extends 'nuevo_template/dashboard.html' %}
 {% block pagecontent %}
 
+FB.ui({
+  method: 'share',
+  href: 'https://developers.facebook.com/docs/'
+}, function(response){});
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v12.0&appId=198219488748488&autoLogAppEvents=1" nonce="aqQoIOlo"></script>
 
 <div class="card text-center">
     <div class="card-header">
         {{ object.lenguajeProgramacion }}
     </div>
     <div class="card-body">
+      
       <img class="card-img-top" src="{{ object.codigo_foto.url }}" >
+      
       <p class="card-text">{{ object.informacion_codigo }} </p>
       <p class="card-text">{{ object.codigo_texto }} </p>
       <p class="card-text">{{ object.categoria }} </p>
       <p class="card-text">{{ object.informacion_codigo }} </p>
       
     </div>
+    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
     <div class="card-footer text-muted">
-      Fecha de publicacion {{ object.fecha_creacion  }}, Created by {{ object.usuario.username }}
+      Fecha de publicacion {{ object.fecha_creacion  }}, Created by {{ object.usuario.username }} <div id="donate-button-container">
+        <div id="donate-button"></div>
+        <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+        <script>
+        PayPal.Donation.Button({
+        env:'production',
+        hosted_button_id:'WX7VFVQUJV364',
+        image: {
+        src:'https://www.paypalobjects.com/es_XC/MX/i/btn/btn_donateCC_LG.gif',
+        alt:'Donar con el botón PayPal',
+        title:'PayPal - The safer, easier way to pay online!',
+        }
+        }).render('#donate-button');
+        </script>
+        </div>
+        
     </div>
 </div>
-
-
-
 
 {% endblock pagecontent %}
