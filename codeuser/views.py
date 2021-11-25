@@ -10,6 +10,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import requests 
 import json
+from django.core.mail import send_mail
+
+
 
 def profile(request):
     context ={
@@ -70,9 +73,25 @@ class Crearprofile(generic.CreateView):
 
         form = self.form_class(initial={'usuario': request.user })
 
+
         return render(request, self.template_name, {'form': form
         })
 
+    #after submit form semd email to user
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            user_corre = Programador.objects.filter(usuario = request.user)
+            
+            send_mail(
+                'Bienvenido a CodeUser',
+                'Gracias por registrarte en CodeUser, esperamos que disfrutes de nuestros servicios',
+                'mcardonaexcel@gmail.com',
+                [user_corre.get().correo],
+                fail_silently=False,
+            )
+        return redirect(self.success_url)
 
 
 class Editarprofile(LoginRequiredMixin, generic.UpdateView):

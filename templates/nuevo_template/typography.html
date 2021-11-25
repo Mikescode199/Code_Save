@@ -39,8 +39,7 @@
               <form method="POST" enctype=multipart/form-data>
                 {% csrf_token %}
                 {{ form.as_p }}
-            
-            
+                <!-- {{ form.lenguajeProgramacion }} create a select where u can type the lenguaje -->
                 <button type="submit" class="btn btn-primary" >Guardar</button>
               </form>
             
